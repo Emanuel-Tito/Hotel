@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Habitaciones disponibles</h2>
+<ul>
+  {% for hab in habitaciones %}
+    <li>
+      {{ hab }} – ${{ hab.precio_noche }} por noche
+      <a href="{% url 'reservar' hab.id %}">Reservar</a>
+    </li>
+  {% empty %}
+    <li>No hay habitaciones libres.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
