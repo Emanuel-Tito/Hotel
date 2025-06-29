@@ -1,0 +1,147 @@
+/* login_custom.css — Estilos para /admin/login/ */
+
+/* 1) Ocultar la barra nativa de Django Admin y herramientas de usuario */
+#header {
+  background-color: transparent !important;
+}
+
+/* 2) Empujar el contenido hacia abajo para dejar espacio a tu barra */
+body {
+  padding-top: 80px;  /* ajusta este valor si tu barra mide más o menos */
+  background: #f5f7fa;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  margin: 0;
+}
+
+/* 3) TU BARRA SUPERIOR FIJA Y UNIFORME */
+.barra-superior {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  background-color: #0057c9;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  z-index: 1000;
+  box-sizing: border-box;
+}
+.barra-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.barra-logo img {
+  height: 40px;
+  width: auto;
+}
+.barra-logo span {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.barra-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: background 0.2s;
+}
+.barra-links a:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* 4) TARJETA DE LOGIN */
+.login-card {
+  max-width: 360px;
+  margin: 2.5rem auto;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+.login-card-body {
+  padding: 2.5rem 2rem;
+}
+.login-card-body h2 {
+  font-size: 1.75rem;
+  color: #0057c9;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+/* Campos de formulario */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 500;
+}
+.form-control {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  background: #f0f4f8;
+  font-size: 1rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+.form-control:focus {
+  border-color: #0057c9;
+  background: #fff;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0,87,201,0.15);
+}
+
+/* 5) BOTÓN “Entrar” */
+.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #0057c9;
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0,87,201,0.3);
+  transition: background-color 0.2s, transform 0.1s;
+  margin-top: 1rem;
+}
+.btn-primary:hover {
+  background-color: #004299;
+  transform: translateY(-1px);
+}
+.btn-primary:active {
+  background-color: #003377;
+  transform: translateY(1px);
+}
+
+/* 6) Mensaje de error */
+.alert-danger {
+  background: #fdecea;
+  border: 1px solid #f1a9a0;
+  color: #a94442;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+/* 7) Responsive */
+@media (max-width: 480px) {
+  .barra-superior {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+    padding: 1rem;
+  }
+  .login-card {
+    margin: 1.5rem 1rem;
+  }
+}

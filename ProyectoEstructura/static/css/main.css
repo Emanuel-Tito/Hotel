@@ -1,0 +1,59 @@
+/* sombreado suave de las tarjetas */
+.card {
+  transition: transform .25s, box-shadow .25s;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
+}
+
+/* gradiente del hero */
+.hero {
+  background-image: linear-gradient(120deg, #0066ff 0%, #4b8dff 100%);
+}
+
+/* botón primario un poco más redondeado */
+.btn-primary {
+  border-radius: .5rem;
+}
+/* ---------- NAVBAR ESTILO BOOKING ---------- */
+.nav-booking {
+  background:#0057c9;          /* azul Booking */
+  padding:.75rem 0;
+}
+.nav-booking .navbar-brand,
+.nav-booking .nav-link,
+.nav-booking .btn,
+.nav-booking .dropdown-toggle {
+  color:#fff!important;
+  font-weight:500;
+}
+.nav-booking .nav-link:hover,
+.nav-booking .btn:hover {
+  opacity:.85;
+}
+.nav-booking .btn-outline-light {
+  border:1px solid #fff;
+  border-radius:.25rem;
+}
+/* “píldora” para la opción activa */
+.nav-booking .pill-active {
+  border:1px solid #fff;
+  border-radius:2rem;
+  padding:.25rem 1rem;
+}
+/* separadores verticales finos */
+.nav-booking .divider {
+  width:1px;
+  height:24px;
+  background:#fff4;
+  margin:0 .75rem;
+}
+/* íconos y bandera */
+.flag-small {
+  width:20px;
+  height:14px;
+  object-fit:cover;
+  border-radius:2px;
+  margin:0 .25rem;
+}

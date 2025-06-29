@@ -1,0 +1,51 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block title %}Hotel Ruby – Iniciar sesión{% endblock %}
+
+{# —— Branding: tu barra superior —— #}
+{% block branding %}
+<div class="barra-superior">
+  <div class="barra-logo">
+    <img src="{% static 'img/logo.png' %}" alt="Logo Hotel Ruby">
+    <span>Hotel Ruby</span>
+  </div>
+  <div class="barra-links">
+    <a href="/" class="barra-link">Inicio</a>
+  </div>
+</div>
+{% endblock %}
+
+{# — Ocultar migas y título nativo solo en login — #}
+{% block breadcrumbs %}{% endblock %}
+{% block content_title %}{% endblock %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/login_custom.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login-card">
+  <div class="login-card-body">
+    <h2>Iniciar sesión</h2>
+    {% if form.errors %}
+      <div class="alert alert-danger">Usuario o contraseña incorrectos.</div>
+    {% endif %}
+    <form method="post" id="login-form">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="id_username">Usuario</label>
+        <input type="text" name="username" autofocus required
+               class="form-control" id="id_username" placeholder="Ingresa tu usuario">
+      </div>
+      <div class="form-group">
+        <label for="id_password">Contraseña</label>
+        <input type="password" name="password" required
+               class="form-control" id="id_password" placeholder="••••••••">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
