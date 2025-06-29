@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Detalle de reserva{% endblock %}
+
+{% block content %}
+<h2>Reserva #{{ reserva.id }}</h2>
+
+<ul class="list-group mb-3">
+  <li class="list-group-item"><strong>Cliente:</strong> {{ reserva.cliente }}</li>
+  <li class="list-group-item"><strong>Habitación:</strong> {{ reserva.habitacion }}</li>
+  <li class="list-group-item"><strong>Entrada:</strong> {{ reserva.check_in }}</li>
+  <li class="list-group-item"><strong>Salida:</strong> {{ reserva.check_out }}</li>
+  <li class="list-group-item"><strong>Noches:</strong> {{ reserva.noches }}</li>
+  <li class="list-group-item"><strong>Total:</strong> ${{ reserva.calcular_total }}</li>
+  <li class="list-group-item"><strong>Estado:</strong> {{ reserva.get_estado_display }}</li>
+</ul>
+
+{% if reserva.estado == 'RES' %}
+  <a class="btn btn-danger"
+     href="{% url 'hotel:cancelar_reserva' reserva.id %}">Cancelar reserva</a>
+{% endif %}
+<a class="btn btn-primary"
+   href="{% url 'hotel:listado_habitaciones' %}">Volver al listado</a>
+{% endblock %}

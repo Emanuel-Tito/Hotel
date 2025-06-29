@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Reservar habitación{% endblock %}
+
+{% block content %}
+<h2>Reserva – {{ habitacion }}</h2>
+<p><strong>Precio:</strong> ${{ habitacion.precio_noche }} por noche</p>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-success" type="submit">Confirmar</button>
+  <a class="btn btn-secondary" href="{% url 'hotel:listado_habitaciones' %}">Cancelar</a>
+</form>
+{% endblock %}

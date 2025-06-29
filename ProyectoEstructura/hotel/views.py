@@ -13,7 +13,7 @@ def reservar(request, hab_id):
         reserva = form.save()
         habitacion.disponible = False
         habitacion.save()
-        return redirect('detalle_reserva', reserva.id)
+        return redirect('hotel:detalle_reserva', reserva.id)
     return render(request, 'hotel/reservar.html', {'form': form, 'habitacion': habitacion})
 
 def detalle_reserva(request, res_id):

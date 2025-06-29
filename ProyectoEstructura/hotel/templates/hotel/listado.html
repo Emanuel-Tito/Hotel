@@ -1,14 +1,25 @@
 {% extends "base.html" %}
+
+{% block title %}Habitaciones disponibles{% endblock %}
+
 {% block content %}
 <h2>Habitaciones disponibles</h2>
-<ul>
+
+<ul class="list-group">
   {% for hab in habitaciones %}
-    <li>
-      {{ hab }} – ${{ hab.precio_noche }} por noche
-      <a href="{% url 'reservar' hab.id %}">Reservar</a>
+    <li class="list-group-item d-flex justify-content-between">
+      <span>
+        {{ hab }} – <strong>${{ hab.precio_noche }}</strong> por noche
+      </span>
+
+      {# Enlace con namespace hotel: #}
+      <a class="btn btn-sm btn-primary"
+         href="{% url 'hotel:reservar' hab.id %}">
+        Reservar
+      </a>
     </li>
   {% empty %}
-    <li>No hay habitaciones libres.</li>
+    <li class="list-group-item">No hay habitaciones libres.</li>
   {% endfor %}
 </ul>
 {% endblock %}
