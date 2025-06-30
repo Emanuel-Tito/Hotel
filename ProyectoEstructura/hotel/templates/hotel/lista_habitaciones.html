@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Habitaciones{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Listado de Habitaciones</h2>
+
+  <table class="table table-bordered table-hover shadow">
+    <thead class="table-primary text-center">
+      <tr>
+        <th>Número</th>
+        <th>Tipo</th>
+        <th>Precio/Noche</th>
+        <th>Capacidad</th>
+        <th>Disponible</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      {% for habitacion in habitaciones %}
+      <tr>
+        <td>{{ habitacion.numero }}</td>
+        <td>{{ habitacion.tipo }}</td>
+        <td>${{ habitacion.precio_noche }}</td>
+        <td>{{ habitacion.capacidad }}</td>
+        <td>
+          {% if habitacion.disponible %}
+            <span class="text-success fw-semibold">Sí</span>
+          {% else %}
+            <span class="text-danger fw-semibold">No</span>
+          {% endif %}
+        </td>
+        <td>
+          <a href="{% url 'hotel:editar_habitacion' habitacion.pk %}" class="btn btn-sm btn-warning">Editar</a>
+          <a href="{% url 'hotel:eliminar_habitacion' habitacion.pk %}" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar esta habitación?')">Eliminar</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="6">No hay habitaciones registradas.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="mt-4 text-center">
+    <a href="{% url 'hotel:registrar_habitacion' %}" class="btn btn-success">Agregar nueva habitación</a>
+    <a href="{% url 'hotel:listado_habitaciones' %}" class="btn btn-secondary">Volver</a>
+  </div>
+</div>
+{% endblock %}

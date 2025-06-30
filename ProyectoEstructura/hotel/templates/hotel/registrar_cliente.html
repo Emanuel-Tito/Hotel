@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}Registrar Usuario{% endblock %}
+
+{% block content %}
+<div class="formulario-chevere">
+  <h1 class="titulo-form">Registrar Usuario</h1>
+
+  {% if form.errors %}
+    <div class="alerta-errores">
+      <strong>Corrige los errores:</strong>
+      <ul>
+        {% for field in form %}
+          {% for error in field.errors %}
+            <li>{{ field.label }}: {{ error }}</li>
+          {% endfor %}
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <form method="post" id="form-registro">
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="campo-mejorado">
+        <label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+        {{ field }}
+      </div>
+    {% endfor %}
+    <button type="submit">Registrar</button>
+  </form>
+</div>
+
+<script>
+  window.onload = function () {
+    const soloLetras = (e) => {
+      const char = e.key;
+      const regex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]$/;
+      if (!regex.test(char)) {
+        e.preventDefault();
+      }
+    };
+
+    const soloNumeros = (e) => {
+      const char = e.key;
+      if (!/^\d$/.test(char)) {
+        e.preventDefault();
+      }
+    };
+
+    const nombre = document.getElementById('id_nombres');
+    const apellido = document.getElementById('id_apellidos');
+    const telefono = document.getElementById('id_telefono');
+    const dni = document.getElementById('id_dni');
+
+    if (nombre) nombre.addEventListener('keypress', soloLetras);
+    if (apellido) apellido.addEventListener('keypress', soloLetras);
+    if (telefono) telefono.addEventListener('keypress', soloNumeros);
+    if (dni) dni.addEventListener('keypress', soloNumeros);
+  };
+</script>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Editar Habitación{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4">Editar Habitación</h2>
+<div class="container">
+  <form method="post" class="shadow p-4 rounded bg-white" style="max-width: 500px; margin: auto;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary w-100">Guardar Cambios</button>
+  </form>
+</div>
+{% endblock %}

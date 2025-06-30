@@ -1,19 +1,17 @@
-/* login_custom.css — Estilos para /admin/login/ */
 
-/* 1) Ocultar la barra nativa de Django Admin y herramientas de usuario */
 #header {
   background-color: transparent !important;
 }
 
-/* 2) Empujar el contenido hacia abajo para dejar espacio a tu barra */
+
 body {
-  padding-top: 80px;  /* ajusta este valor si tu barra mide más o menos */
+  padding-top: 80px;
   background: #f5f7fa;
   font-family: "Segoe UI", Tahoma, sans-serif;
   margin: 0;
 }
 
-/* 3) TU BARRA SUPERIOR FIJA Y UNIFORME */
+
 .barra-superior {
   position: fixed;
   top: 0; left: 0; width: 100%;
@@ -52,7 +50,7 @@ body {
   background: rgba(255,255,255,0.2);
 }
 
-/* 4) TARJETA DE LOGIN */
+
 .login-card {
   max-width: 360px;
   margin: 2.5rem auto;
@@ -72,7 +70,7 @@ body {
   font-weight: 700;
 }
 
-/* Campos de formulario */
+
 .form-group {
   margin-bottom: 1.25rem;
 }
@@ -98,7 +96,7 @@ body {
   box-shadow: 0 0 0 4px rgba(0,87,201,0.15);
 }
 
-/* 5) BOTÓN “Entrar” */
+
 .btn-primary {
   display: block;
   width: 100%;
@@ -122,7 +120,7 @@ body {
   transform: translateY(1px);
 }
 
-/* 6) Mensaje de error */
+
 .alert-danger {
   background: #fdecea;
   border: 1px solid #f1a9a0;
@@ -133,7 +131,7 @@ body {
   font-size: 0.95rem;
 }
 
-/* 7) Responsive */
+
 @media (max-width: 480px) {
   .barra-superior {
     flex-direction: column;

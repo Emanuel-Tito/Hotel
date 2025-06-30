@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Reservas del Hotel{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4 text-center fw-bold">Listado de Reservas</h2>
+
+  {% if reservas %}
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="table-primary">
+          <tr>
+            <th>Cliente</th>
+            <th>Habitación</th>
+            <th>Fechas</th>
+            <th>Noches</th>
+            <th>Estado</th>
+            <th>Pago</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for reserva in reservas %}
+          <tr>
+            <td>{{ reserva.cliente }}</td>
+            <td>{{ reserva.habitacion.numero }} ({{ reserva.habitacion.get_tipo_display }})</td>
+            <td>{{ reserva.check_in }} a {{ reserva.check_out }}</td>
+            <td>{{ reserva.noches }}</td>
+            <td>{{ reserva.get_estado_display }}</td>
+            <td>
+              {% if reserva.pago %}
+                ✅ Pagado
+              {% else %}
+                ❌ No pagado
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="alert alert-info text-center">No hay reservas registradas.</div>
+  {% endif %}
+
+  <div class="text-center mt-4">
+    <a href="{% url 'hotel:listado_habitaciones' %}" class="btn btn-secondary">Volver al panel</a>
+  </div>
+</div>
+{% endblock %}

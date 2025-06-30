@@ -6,13 +6,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin as DefaultUserAdmin
 
 class CustomUserAdmin(DefaultUserAdmin):
-    search_fields = ['username', 'first_name', 'last_name', 'email']  # campos a buscar
+    search_fields = ['username', 'first_name', 'last_name', 'email']
+admin.site.unregister(User)
+admin.site.register(User, CustomUserAdmin)
 
-admin.site.unregister(User)  # desregistrar el original
-admin.site.register(User, CustomUserAdmin)  # registrar el modificado
 
 
-# Nueva clase que oculta el campo permissions
 class GroupAdminSinPermisos(DefaultGroupAdmin):
     exclude = ('permissions',)  # Oculta el campo en el formulario
 
@@ -20,7 +19,7 @@ class GroupAdminSinPermisos(DefaultGroupAdmin):
 admin.site.unregister(Group)
 admin.site.register(Group, GroupAdminSinPermisos)
 
-# Register your models here.
+
 
 admin.site.register(Habitacion)
 admin.site.register(Cliente)

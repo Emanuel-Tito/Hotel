@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Importar JSON{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <h3 class="mb-4">Importar Paquete JSON</h3>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="archivo_json" class="form-label">Selecciona el archivo JSON:</label>
+      <input type="file" name="archivo_json" class="form-control" accept=".json" required>
+    </div>
+    <button type="submit" class="btn btn-success">Importar</button>
+    <a href="{% url 'hotel:listado_habitaciones' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+</div>
+{% endblock %}
