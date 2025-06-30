@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Reservas{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4">Reservas Realizadas</h2>
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Cliente</th>
+        <th>Habitación</th>
+        <th>Check-In</th>
+        <th>Check-Out</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in reservas %}
+        <tr>
+          <td>{{ r.cliente.nombres }} {{ r.cliente.apellidos }}</td>
+          <td>{{ r.habitacion.numero }}</td>
+          <td>{{ r.check_in }}</td>
+          <td>{{ r.check_out }}</td>
+          <td>
+            <a href="{% url 'hotel:editar_reserva' r.id %}" class="btn btn-sm btn-warning">Editar</a>
+            <a href="{% url 'hotel:eliminar_reserva' r.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -2,60 +2,41 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <title>{% block title %}Hotel{% endblock %}</title>
 
-  <!-- Bootstrap 5 + Bootstrap Icons -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  >
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-    rel="stylesheet"
-  >
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Hotel Ruby{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Tu CSS -->
-  <link href="{% static 'css/main.css' %}" rel="stylesheet">
 </head>
+<!-- Bootstrap 5 JS (opcional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <body>
-  <!-- Barra azul  -->
-  <nav class="navbar nav-booking">
-    <div class="container-fluid px-4">
-      <!-- Logo + Nombre -->
-      <a
-        class="navbar-brand d-flex align-items-center"
-        href="{% url 'hotel:listado_habitaciones' %}"
-      >
-        <img
-          src="{% static 'img/logo.png' %}"
-          alt="Logo Hotel Ruby"
-          style="height:32px; width:auto;"
-          class="me-2"
-        >
-        <span class="text-white fw-bold fs-5">Hotel Ruby</span>
-      </a>
 
-      <!-- Enlaces / botones de la derecha -->
-      <div class="d-flex align-items-center gap-3 ms-auto flex-wrap">
-
-        <a href="#" class="text-white fs-5">
-          <i class="bi bi-question-circle"></i>
-        </a>
-        <a href="#" class="btn btn-outline-light btn-sm">Hazte una cuenta</a>
-        <a href="/admin/" class="btn btn-outline-light btn-sm">Inicia sesión</a>
-      </div>
+  <!-- 🔵 BARRA SUPERIOR -->
+  <header class="barra-superior">
+    <div class="logo-nombre">
+      <img src="{% static 'img/logo.png' %}" alt="Logo del Hotel Ruby" class="logo">
+      <span class="nombre-app">Hotel Ruby</span>
     </div>
-  </nav>
+    <div class="acciones">
+      <a href="#" class="btn-secundario">Hazte una cuenta</a>
+      <a href="#" class="btn-secundario">Inicia sesión</a>
+    </div>
+  </header>
 
-  <!-- Contenido centrado -->
-  <div class="container py-4">
+  <!-- 🔽 CONTENIDO -->
+  <main class="contenido">
     {% block content %}{% endblock %}
+  </main>
 
-    <footer class="pt-4 mt-5 border-top">
-      <p class="text-muted mb-0">&copy; 2025 Hotel Ruby</p>
-    </footer>
-  </div>
+  <!-- 📄 PIE DE PÁGINA -->
+  <footer style="text-align: center; margin-top: 2rem;">
+    <hr>
+    <small>© 2025 Hotel Ruby</small>
+  </footer>
+
 </body>
 </html>

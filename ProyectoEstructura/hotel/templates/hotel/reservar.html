@@ -5,10 +5,61 @@
 <h2>Reserva – {{ habitacion }}</h2>
 <p><strong>Precio:</strong> ${{ habitacion.precio_noche }} por noche</p>
 
-<form method="post">
+<form method="post" id="form-reserva">
   {% csrf_token %}
-  {{ form.as_p }}
+
+  <label for="id_cliente">Cliente:</label>
+  {{ form.cliente }}
+
+  <label for="id_check_in">Check-in:</label>
+  {{ form.check_in }}
+
+  <label for="id_check_out">Check-out:</label>
+  {{ form.check_out }}
+
+  <label for="id_habitacion">Habitación:</label>
+  <select name="habitacion" id="id_habitacion" class="form-select">
+    <option value="{{ habitacion.id }}" data-precio="{{ habitacion.precio_noche }}" selected>
+      Habitación {{ habitacion.numero }} - {{ habitacion.tipo }} (${{ habitacion.precio_noche }} / noche)
+    </option>
+  </select>
+
+  <label for="total" class="mt-3">Monto total a pagar:</label>
+  <input type="text" id="total" name="total" readonly class="form-control mb-3">
+
   <button class="btn btn-success" type="submit">Confirmar</button>
   <a class="btn btn-secondary" href="{% url 'hotel:listado_habitaciones' %}">Cancelar</a>
 </form>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const habitacionSelect = document.getElementById("id_habitacion");
+    const checkInInput = document.getElementById("id_check_in");
+    const checkOutInput = document.getElementById("id_check_out");
+    const totalInput = document.getElementById("total");
+
+    function calcularMonto() {
+      const selectedOption = habitacionSelect.options[habitacionSelect.selectedIndex];
+      const precioNoche = selectedOption.getAttribute("data-precio");
+      const checkIn = new Date(checkInInput.value);
+      const checkOut = new Date(checkOutInput.value);
+
+      if (precioNoche && checkInInput.value && checkOutInput.value && checkOut > checkIn) {
+        const dias = (checkOut - checkIn) / (1000 * 60 * 60 * 24);
+        const total = dias * parseFloat(precioNoche);
+        totalInput.value = `$${total.toFixed(2)}`;
+      } else {
+        totalInput.value = '';
+      }
+    }
+
+    habitacionSelect.addEventListener("change", calcularMonto);
+    checkInInput.addEventListener("change", calcularMonto);
+    checkOutInput.addEventListener("change", calcularMonto);
+
+    // 🔁 Forzar el cálculo inicial si las fechas ya están prellenadas
+    setTimeout(calcularMonto, 100);
+  });
+</script>
+
 {% endblock %}

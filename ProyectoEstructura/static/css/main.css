@@ -1,59 +1,197 @@
-/* sombreado suave de las tarjetas */
-.card {
-  transition: transform .25s, box-shadow .25s;
-}
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
-}
-
-/* gradiente del hero */
-.hero {
-  background-image: linear-gradient(120deg, #0066ff 0%, #4b8dff 100%);
+/* === BARRA SUPERIOR === */
+.barra-superior {
+  background-color: #0057c9;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* botón primario un poco más redondeado */
-.btn-primary {
-  border-radius: .5rem;
+.logo-nombre {
+  display: flex;
+  align-items: center;
 }
-/* ---------- NAVBAR ESTILO BOOKING ---------- */
-.nav-booking {
-  background:#0057c9;          /* azul Booking */
-  padding:.75rem 0;
+
+.logo {
+  height: 40px;
+  margin-right: 10px;
 }
-.nav-booking .navbar-brand,
-.nav-booking .nav-link,
-.nav-booking .btn,
-.nav-booking .dropdown-toggle {
-  color:#fff!important;
-  font-weight:500;
+
+.nombre-app {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
-.nav-booking .nav-link:hover,
-.nav-booking .btn:hover {
-  opacity:.85;
+
+.acciones a {
+  color: white;
+  border: 1px solid white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-left: 10px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease-in-out;
 }
-.nav-booking .btn-outline-light {
-  border:1px solid #fff;
-  border-radius:.25rem;
+
+.acciones a:hover {
+  background-color: rgba(255, 255, 255, 0.15);
 }
-/* “píldora” para la opción activa */
-.nav-booking .pill-active {
-  border:1px solid #fff;
-  border-radius:2rem;
-  padding:.25rem 1rem;
+
+/* === GENERAL BODY === */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background-color: #f4f6f9;
 }
-/* separadores verticales finos */
-.nav-booking .divider {
-  width:1px;
-  height:24px;
-  background:#fff4;
-  margin:0 .75rem;
+
+main.contenido {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 100px);
+  padding: 40px 20px;
 }
-/* íconos y bandera */
-.flag-small {
-  width:20px;
-  height:14px;
-  object-fit:cover;
-  border-radius:2px;
-  margin:0 .25rem;
+
+/* === FORMULARIO DE REGISTRO BONITO === */
+form {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+
+form h1,
+.titulo-form {
+  text-align: center;
+  font-size: 2rem;
+  color: #222;
+  margin-bottom: 25px;
+}
+
+form label {
+  font-weight: 600;
+  display: block;
+  margin-top: 15px;
+  color: #333;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="number"] {
+  width: 100%;
+  padding: 10px 14px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease-in-out;
+}
+
+form input:focus {
+  border-color: #0057c9;
+  outline: none;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 30px;
+  background-color: #0057c9;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background-color: #004bb0;
+}
+
+/* === ERRORES DEL FORMULARIO === */
+.errorlist {
+  color: #c0392b;
+  background-color: #ffe5e5;
+  padding: 10px;
+  border-radius: 8px;
+  list-style: none;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.formulario-chevere {
+  background: linear-gradient(135deg, #ffffff, #f0f4ff);
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+  margin: 40px auto;
+}
+
+.titulo-form {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #003c91;
+  margin-bottom: 35px;
+  font-weight: bold;
+}
+
+.campo-mejorado {
+  margin-bottom: 25px;
+}
+
+.campo-mejorado label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.campo-mejorado input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.campo-mejorado input:focus {
+  border-color: #0057c9;
+  outline: none;
+  background-color: #f9fbff;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background: #0057c9;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background: #004aad;
+  transform: translateY(-1px);
+}
+
+.alerta-errores {
+  background-color: #ffe6e6;
+  color: #c0392b;
+  border-left: 5px solid #c0392b;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 25px;
 }
